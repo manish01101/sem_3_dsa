@@ -16,13 +16,14 @@ int main() {
     int fib1 = fib(x);
     int fib2 = fib(x+1);
     int cnt = 1;
-    while(n>=0){
+    while(cnt <= n){
+        fib1 = fib(x);
+        fib2 = fib(x+1);
         for(int i=fib1+1; i<fib2; i++) {
-            printf("%d ", i);
-            n--;
-            x++;
-            fib1 = fib(x);
-            fib2 = fib(x+1);
-        }
+            if(cnt <= n) {
+                printf("%d ", i);
+            }
+            cnt++;  
+        }x++;
     }
 }
