@@ -1,21 +1,36 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct bstnode {
+typedef struct node {
   int data;
-  struct bstnode* left;
-  struct bstnode* right;
+  struct node* left;
+  struct node* right;
 } node;
 
-node* buildBST(int *arr, int *index) {
+node* buildTree(int *arr, int *index) {
   if(arr[*index] == -1) {
     (*index)++;
     return NULL;
   }
   node* root = (node*)malloc(sizeof(node));
   root->data = arr[(*index)++];
-  root->left = buildBST(arr, index);
-  root->right = buildBST(arr, index);
+  root->left = buildTree(arr, index);
+  root->right = buildTree(arr, index);
+  return root;
+}
+node* buildBST(node* root, int data) {
+  if(root == NULL) {
+    root = (node*)malloc(sizeof(node));
+    root->data = data;
+    root->left = NULL;
+    root->right = NULL;
+  }
+  else if(data <= root->data) {
+    root->left = buildBST(root->left, data);
+  }
+  else {
+    root->right = buildBST(root->right, data);
+  }
   return root;
 }
 
@@ -45,9 +60,22 @@ void postorder(node* root) {
 }
 
 int main() {
-  int arr[15] = {10,7,5,-1,-1,8,-1,-1,12,11,-1,-1,15,-1,-1};
-  int index = 0;
-  node* root = buildBST(arr, &index);
+  // int arr[15] = {10,7,5,-1,-1,8,-1,-1,12,11,-1,-1,15,-1,-1};
+  // int index = 0;
+  // node*root = buildTree(arr, &index);
+
+  // BST
+  node* root = NULL;
+  // int arr[8] = {4,6,2,5,8,9,1,3};
+  // for(int i=0; i<8; i++) {
+  //   root = buildBST(root, arr[i]);
+  // }
+  root = buildBST(root, 10);
+  root = buildBST(root, 5);
+  root = buildBST(root, 15);
+  root = buildBST(root, 3);
+  root = buildBST(root, 7);
+
   printf("\ninorder: ");
   inorder(root);
   printf("\npreorder: ");
