@@ -60,11 +60,12 @@ void postorder(node* root) {
 }
 
 int main() {
+  // FOR BINARY TREE
   // int arr[15] = {10,7,5,-1,-1,8,-1,-1,12,11,-1,-1,15,-1,-1};
   // int index = 0;
   // node*root = buildTree(arr, &index);
 
-  // BST
+  // FOR BINARY SEARCH TREE
   node* root = NULL;
   // int arr[8] = {4,6,2,5,8,9,1,3};
   // for(int i=0; i<8; i++) {
