@@ -129,7 +129,17 @@ void deleteNode_atPos() {
     int pos;
     printf("enter pos: ");
     scanf("%d", &pos);
-
+    list* temp = start;
+    list* prev = NULL;
+    int cnt = 1;
+    while(cnt < pos && temp != NULL) {
+        prev = temp;
+        temp = temp->next;
+        cnt++;
+    }
+    prev->next = temp->next;
+    temp->next = NULL;
+    free(temp);
 }
 void display() {
     if(start == NULL)
@@ -147,7 +157,7 @@ void display() {
 
 int main() {
     int choice, val;
-    printf("\nenter choice: 0.exit, 1.display, 2.create-list, 3.insert_Node_At_Head, 4.insert_Node_At_Tail, 5.insert_afterVal, 6.insert_beforeVal, 7.insertatPos : ");
+    printf("\nenter choice: 0.exit, 1.display, 2.create-list, 3.insert_Node_At_Head, 4.insert_Node_At_Tail, 5.insert_afterVal, 6.insert_beforeVal, 7.insertatPos, 8.delete at begin, 9.delete at end, 10.delete at pos : ");
     scanf("%d", &choice);
     while (choice) {
         switch (choice){
@@ -172,11 +182,20 @@ int main() {
             case 7:
                 insertatPos();
                 break;
+            case 8:
+                delete_atBegin();
+                break;
+            case 9:
+                delete_atEnd();
+                break;
+            case 10:
+                deleteNode_atPos();
+                break;
             default:
                 printf("enter valid choice!");
                 break;
         }
-        printf("\nenter choice: 0.exit, 1.display, 2.create-list, 3.insert_Node_At_Head, 4.insert_Node_At_Tail, 5.insert_afterVal, 6.insert_beforeVal, 7.insertatPos : ");
+        printf("\nenter choice: 0.exit, 1.display, 2.create-list, 3.insert_Node_At_Head, 4.insert_Node_At_Tail, 5.insert_afterVal, 6.insert_beforeVal, 7.insertatPos, 8.delete at begin, 9.delete at end, 10.delete at pos : ");
         scanf("%d", &choice);
     }
     return 0;

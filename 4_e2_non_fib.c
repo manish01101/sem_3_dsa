@@ -13,8 +13,7 @@ int main() {
     printf("non series: \n");
 
     int x = 1;
-    int fib1 = fib(x);
-    int fib2 = fib(x+1);
+    int fib1,fib2;
     int cnt = 1;
     while(cnt <= n){
         fib1 = fib(x);
