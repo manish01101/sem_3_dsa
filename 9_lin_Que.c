@@ -37,6 +37,10 @@ int main() {
                 }
                 break;
             case 3:
+                if(f==-1) {
+                    printf("queue empty\n");
+                    break;
+                }
                 printf("queue element: \n");
                 for(i = f; i<=r; i++) {
                     printf("%d ", q[i]);
